@@ -1,43 +1,18 @@
-<mk-box header="About header component" [isCollapsable]="false" [isRemovable]="false">
-  <p>The header component is used for displaying logos and sidebars toggle buttons. <br/>You can disable sidebars if you choose to use custom configuration.<br/> You can also add any custom HTML after logo components.</p>
-</mk-box>
-
-<mk-box header="Example" [isCollapsable]="false" [isRemovable]="false">
-  <pre><code class="language-html">&lt;mk-layout-header [isSidebarLeftToggle]=&quot;true&quot; [isSidebarRightToggle]=&quot;true&quot; [logoLink]="['/', 'boxs', 'info-box']" &gt;
-  &lt;mk-layout-header-logo&gt;&lt;b&gt;Admin&lt;/b&gt;LTE&lt;/mk-layout-header-logo&gt;
-  &lt;mk-layout-header-logo-mini&gt;&lt;b&gt;A&lt;/b&gt;LT&lt;/mk-layout-header-logo-mini&gt;
-  //Custom HTML
-&lt;/mk-layout-header&gt;
-</code></pre>
-</mk-box>
-
-<mk-box header="Properties" [isCollapsable]="true" [isRemovable]="false" contentStyleClasses="table-responsive">
-  <table class="table table-bordered table-hover">
-    <tbody>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Default</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td>logoLink</td>
-        <td>string | any[]</td>
-        <td>"/"</td>
-        <td>Defines the header logo routerLink.</td>
-      </tr>
-      <tr>
-        <td>isSidebarLeftToggle</td>
-        <td>boolean</td>
-        <td>true</td>
-        <td>Defines if the sidebar left toggle button is activated.</td>
-      </tr>
-      <tr>
-        <td>isSidebarLeftToggle</td>
-        <td>boolean</td>
-        <td>true</td>
-        <td>Defines if the sidebar left toggle button is activated.</td>
-      </tr>
-    </tbody>
-  </table>
-</mk-box>
+<header #headerElement class="main-header">
+  <a [routerLink]="logoLink" class="logo">
+    <span class="logo-mini"><ng-template [ngTemplateOutlet]="headerLogoMiniComponent?.templateRef"></ng-template></span>
+    <span class="logo-lg"><ng-template [ngTemplateOutlet]="headerLogoComponent?.templateRef"></ng-template></span>
+  </a>
+  <nav class="navbar navbar-static-top">
+    <a *ngIf="isSidebarLeftToggle" #sidebarLeftToggleElement href="#" class="sidebar-toggle">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    <div *ngIf="isSidebarRightToggle" class="sidebar-right-toggle">
+      <a #sidebarRightToggleElement href="#"><i class="fa fa-gears"></i></a>
+    </div>
+    <ng-content></ng-content>
+  </nav>
+</header>
