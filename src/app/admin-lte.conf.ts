@@ -10,15 +10,15 @@ export const adminLteConf = {
   // layout: 'normal',
   sidebarLeftMenu: [
     {label: 'MAIN NAVIGATION', separator: true},
-    {label: 'Users', iconClasses: 'fa fa-th-list', children: [
+    {label: 'Users', iconClasses: 'fa fa-users', children: [
         {label: 'List', route: 'layout/configuration'},
         {label: 'New User', route: 'layout/custom'},
     ]},
-    {label: 'Ticket', iconClasses: 'fa fa-th-list', children: [
+    {label: 'Ticket', iconClasses: 'fa fa-sticky-note', children: [
       {label: 'List', route: 'layout/configuration'},
       {label: 'New Ticket', route: 'layout/custom'},
     ]},
-    {label: 'Users', iconClasses: 'fa fa-th-list', children: [
+    {label: 'Summary', iconClasses: 'fa fa-th-list', children: [
       {label: 'To view', route: 'layout/configuration'}
     ]}
   ]
