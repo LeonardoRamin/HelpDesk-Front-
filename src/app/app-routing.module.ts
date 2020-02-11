@@ -2,23 +2,31 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
-  path: '',
-  data: {
-      title: 'Home'
+    path: '',
+    canActivate: [LoginGuard],
+    children: [
+      {
+        path: '',
+        data: {
+          title: 'Home'
+        },
+        component: HomeComponent
+      },
+    ]
   },
-      component: HomeComponent
-  },
-   {
+
+  {
     path: 'login',
     loadChildren: './+login/login.module#LoginModule',
     data: {
       title: 'Login',
       customLayout: true
     }
-   }
+  }
 ];
 
 @NgModule({

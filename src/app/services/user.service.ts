@@ -10,10 +10,6 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  login(user: User){
-    return this.http.post(`${HELP_DESK_API}/api/auth`, user);
-  }
-
   createOrUpdate(user: User){
     if(user.id != null && user.id != ''){
       return this.http.put(`${HELP_DESK_API}/api/user`, user);
