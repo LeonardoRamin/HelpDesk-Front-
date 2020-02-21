@@ -11,7 +11,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(user: User){
-    this.http.post(`${HELP_DESK_API}/api/auth`, user);
+    return this.http.post(`${HELP_DESK_API}/api/auth`, user);
   }
 
   createOrUpdate(user: User){

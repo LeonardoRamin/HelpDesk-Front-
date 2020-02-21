@@ -1,6 +1,6 @@
 <body class="sidebar-mini layout-fixed vsc-initialized sidebar-collapse" style="height: auto;">
-    <app-header></app-header>
-    <app-menu></app-menu>
+    <app-header [hidden]="!showTemplate"></app-header>
+    <app-menu [hidden]="!showTemplate"></app-menu>
 
     <div class="content-wrapper">
         <div class="content-header">
@@ -10,5 +10,5 @@
         </div>
     </div>
 
-    <app-footer></app-footer>
+    <app-footer [hidden]="!showTemplate"></app-footer>
 </body>
