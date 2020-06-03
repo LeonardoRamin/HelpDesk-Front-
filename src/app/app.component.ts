@@ -9,11 +9,21 @@ import { SharedService } from './services/shared.service';
 export class AppComponent implements OnInit {
   
   showTemplate: boolean = false;
-  public shared = SharedService.getInstance();
+  public shared: SharedService;
+
+  constructor(){
+    this.shared = SharedService.getInstance();
+  }
 
   ngOnInit(){
     this.shared.showTemplate.subscribe(
       show => this.showTemplate = show
     );
+  }
+
+  showContentWrapper(){
+    return {
+      'content-wrapper' : this.shared.isLoggedIn()
+    }
   }
 }

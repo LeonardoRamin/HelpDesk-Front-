@@ -8,8 +8,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { routes } from './app.routes';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { UserService } from './services/user.service';
+import { SharedService } from './services/shared.service';
+import { AuthInterceptor } from './components/security/auth.interceptor';
+import { AuthGuard } from './components/security/auth.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,16 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     routes
   ],
-  providers: [],
+  providers: [
+    UserService,
+    SharedService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,9 @@
-<div class="card card-info" style="width: 50%;">
+<div class="center-box-login">
+  <div class="card card-info" style="width: 30%;">
     <div class="card-header">
       <h3 class="card-title">Help Desk | Login</h3>
     </div>
-    <form class="form-horizontal">
+    <form class="form-horizontal" #form="ngForm" (ngSubmit)="login()">
       <div class="alert alert-error" role="alert" *ngIf="message">
         <strong>Invalid email or password</strong>
       </div>
@@ -47,7 +48,8 @@
       <!-- /.card-body -->
       <div class="card-footer">
         <button type="submit" [disabled]="!form.valid" class="btn btn-info">Sign in</button>
-        <button type="submit" (click)="cancelLogin()" class="btn btn-default float-right">Cancel</button>
+        <button type="button" (click)="cancelLogin()" class="btn btn-default float-right">Cancel</button>
       </div>
     </form>
   </div>
+</div>

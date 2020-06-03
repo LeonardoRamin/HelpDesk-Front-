@@ -2,7 +2,7 @@
     <app-header [hidden]="!showTemplate"></app-header>
     <app-menu [hidden]="!showTemplate"></app-menu>
 
-    <div class="content-wrapper">
+    <div [ngClass]="showContentWrapper()">
         <div class="content-header">
         </div>
         <div class="content">
